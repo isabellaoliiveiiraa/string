@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Senha</title>
+</head>
+<body>
+
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            text-align: center;  
+            
+        }
+        
+        .container {
+            max-width: 400px;  
+            margin: 0 auto;  
+        }
+        
+     
+        input, button {
+            padding: 10px;  
+            margin: 5px 0; 
+            font-size: 16px; 
+            width: 100%;  
+            box-sizing: border-box; 
+        }
+        
+        
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;  
+        }
+
+        
+        .hide-show-btn {
+            width: auto;  
+            cursor: pointer; 
+            background-color: transparent; 
+            border: none;  
+            color: #007BFF;  
+            text-decoration: underline;  
+            font-size: 14px;  
+        }
+    </style>
+
+    <div class="container">
+        <h2>Digite sua senha</h2>
+        <input type="password" id="senha" placeholder="Digite a senha" />
+        <button class="hide-show-btn" id="toggleSenha">Mostrar senha</button>
+        <button id="verificar">Verificar</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const senhaCorreta = '123456';
+
+        
+        const campoSenha = document.getElementById('senha'); 
+        const botaoVerificar = document.getElementById('verificar'); 
+        const resultado = document.getElementById('resultado');  
+        const botaoToggle = document.getElementById('toggleSenha');  
+
+        
+        function verificarSenha() {
+            const senhaDigitada = campoSenha.value; 
+            
+            if (senhaDigitada === senhaCorreta) {
+                resultado.textContent = 'Senha correta!';  
+                resultado.style.color = 'green';  
+            } else {
+                resultado.textContent = 'Senha incorreta. Tente novamente.';  
+                resultado.style.color = 'red'; 
+            }
+        }
+
+    
+        function toggleSenha() {
+            if (campoSenha.type === 'password') {
+                campoSenha.type = 'text'; 
+                botaoToggle.textContent = 'Ocultar senha'; 
+            } else {
+                campoSenha.type = 'password';  
+                botaoToggle.textContent = 'Mostrar senha'; 
+            }
+        }
+
+        botaoVerificar.addEventListener('click', verificarSenha);
+        botaoToggle.addEventListener('click', toggleSenha);
+    </script>
+
+</body>
+</html>
